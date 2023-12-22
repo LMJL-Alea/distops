@@ -1,0 +1,50 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# distops
+
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/LMJL-Alea/distops/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/LMJL-Alea/distops/actions/workflows/R-CMD-check.yaml)
+[![Codecov test coverage](https://codecov.io/gh/LMJL-Alea/distops/branch/master/graph/badge.svg)](https://app.codecov.io/gh/LMJL-Alea/distops?branch=master)
+[![pkgdown](https://github.com/LMJL-Alea/distops/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/LMJL-Alea/distops/actions/workflows/pkgdown.yaml)
+[![test-coverage](https://github.com/LMJL-Alea/distops/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/LMJL-Alea/distops/actions/workflows/test-coverage.yaml)
+<!-- badges: end -->
+
+The goal of **distops** is to provide a set of functions to compute distances between observations in a sample and to perform operations on distance matrices.
+
+## Installation
+
+You can install the development version of distops from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("LMJL-Alea/distops")
+```
+
+## Example
+
+Let us compute the Euclidean distance matrix for the `cars` dataset. First, we convert the dataset to a list of observations:
+
+```{r}
+cars_list <- apply(cars, 1, \(.x) .x, simplify = FALSE)
+cars_list
+```
+
+Next, we compute the Euclidean distance matrix via [`distops::dist()`]:
+
+```{r}
+cars_dist <- distops::dist(cars_list)
+cars_dist
+```

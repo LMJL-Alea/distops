@@ -48,3 +48,9 @@ Next, we compute the Euclidean distance matrix via [`distops::dist()`]:
 cars_dist <- distops::dist(cars_list)
 cars_dist
 ```
+
+We can subset this matrix using the `[` operator:
+
+```{r}
+cars_dist[2:3, 7:12]
+```

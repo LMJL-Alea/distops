@@ -31,8 +31,6 @@ Subset operator for the distance matrix stored as an object of
 class \code{\link[stats:dist]{stats::dist}}.
 }
 \examples{
-D <- cars |>
- apply(1, \(.x) .x, simplify = FALSE) |> # Convert to a list of observations
- dist()
+D <- stats::dist(iris[, 1:4])
 D[2:3, 7:12]
 }

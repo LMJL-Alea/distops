@@ -16,12 +16,24 @@
     <loc>https://lmjl-alea.github.io/distops/index.html</loc>
   </url>
   <url>
-    <loc>https://lmjl-alea.github.io/distops/reference/dist.html</loc>
+    <loc>https://lmjl-alea.github.io/distops/news/index.html</loc>
+  </url>
+  <url>
+    <loc>https://lmjl-alea.github.io/distops/reference/as.matrix.subdist.html</loc>
+  </url>
+  <url>
+    <loc>https://lmjl-alea.github.io/distops/reference/distops-package.html</loc>
   </url>
   <url>
     <loc>https://lmjl-alea.github.io/distops/reference/index.html</loc>
   </url>
   <url>
     <loc>https://lmjl-alea.github.io/distops/reference/sub-.dist.html</loc>
+  </url>
+  <url>
+    <loc>https://lmjl-alea.github.io/distops/reference/use_distance.html</loc>
+  </url>
+  <url>
+    <loc>https://lmjl-alea.github.io/distops/reference/use_distops.html</loc>
   </url>
 </urlset>

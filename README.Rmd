@@ -20,6 +20,7 @@ knitr::opts_chunk$set(
 [![Codecov test coverage](https://codecov.io/gh/LMJL-Alea/distops/branch/master/graph/badge.svg)](https://app.codecov.io/gh/LMJL-Alea/distops?branch=master)
 [![pkgdown](https://github.com/LMJL-Alea/distops/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/LMJL-Alea/distops/actions/workflows/pkgdown.yaml)
 [![test-coverage](https://github.com/LMJL-Alea/distops/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/LMJL-Alea/distops/actions/workflows/test-coverage.yaml)
+[![CRAN status](https://www.r-pkg.org/badges/version/distops)](https://CRAN.R-project.org/package=distops)
 <!-- badges: end -->
 
 The goal of **distops** is to provide a set of functions to compute distances between observations in a sample and to perform operations on distance matrices.
@@ -33,24 +34,76 @@ You can install the development version of distops from [GitHub](https://github.
 devtools::install_github("LMJL-Alea/distops")
 ```
 
-## Example
-
-Let us compute the Euclidean distance matrix for the `cars` dataset. First, we convert the dataset to a list of observations:
+## Features
 
 ```{r}
-cars_list <- apply(cars, 1, \(.x) .x, simplify = FALSE)
-cars_list
+library(distops)
 ```
 
-Next, we compute the Euclidean distance matrix via [`distops::dist()`]:
+### Package developement
+
+We provide two functions for package developers to help with defining efficient implementation of the `dist` functions for custom distances. Namely:
+
+- `use_distops()` setups a package to use **distops** for computing distances. 
+In particular, it creates a `src/` directory with a `Makevars` file and a
+`Makevars.win` file. It also creates a `R/distops-package.R` file with the
+appropriate **roxygen2** tags so that the `NAMESPACE` file is modified to add
+the `importFrom()` directives for the Rcpp and RcppParallel packages and the
+`useDynLib()` directive for packages with compiled code. It finally modifies the
+`DESCRIPTION` file to add **Rcpp**, **RcppParallel** and **distops** to the
+`Imports` and `LinkingTo` fields and GNU make to the `SystemRequirements` field.
+- `use_distance()` creates R and C++ files for easy implementation of custom 
+distances.
+
+### Subset operator
+
+Let us compute the Euclidean distance matrix for the `iris` dataset:
 
 ```{r}
-cars_dist <- distops::dist(cars_list)
-cars_dist
+D <- dist(iris[, 1:4], method = "euclidean")
 ```
 
-We can subset this matrix using the `[` operator:
+We can subset this matrix using the `[` operator. We can either provide the same
+indices for rows and columns in which case it return another object of class
+`dist`:
 
 ```{r}
-cars_dist[2:3, 7:12]
+D[1:3, 1:3]
 ```
+
+Or we can provide different indices for rows and columns in which case it
+returns a dense matrix:
+
+```{r}
+D[2:3, 7:12]
+```
+
+The subsetting operation is fully parallelized using the **RcppParallel** 
+package. It is also memory efficient as it does not copy the original distance 
+matrix.
+
+### Medoid computation
+
+The medoid of a sample is the observation that minimizes the sum of distances to
+all other observations. The `find_medoids()` function computes the medoid of a
+sample for a given distance. It takes advantage of the **RcppParallel** package
+to compute the medoid in parallel.
+
+```{r}
+find_medoids(D)
+```
+
+If the `memberships` argument is provided, it returns the medoid for each
+cluster.
+
+```{r}
+find_medoids(D, memberships = as.factor(rep(1:3, each = 50L)))
+```
+
+## Future work
+
+* Pass a list instead of a matrix to be more general?
+* Use Arrow parquet format to store distance matrix in multiple files when 
+sample size exceeds 10,000 or something like that.
+* Use Arrow connection to read in large data.
+* Add Progress bar.

@@ -1,6 +1,6 @@
 Package: distops
 Title: Usual Operations for Distance Matrices in R
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: 
     person("Aymeric", "Stamm", , "aymeric.stamm@cnrs.fr", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-8725-3654"))

@@ -1,4 +1,4 @@
-# distops 0.0.9000
+# distops 0.1.0
 
 ## Features
 
@@ -16,11 +16,3 @@ indices are different.
 * Provides function `find_medoids(D, memberships = NULL)` to find medoid(s) of a 
 distance matrix. If `memberships` is provided, one medoid per cluster is 
 returned. Otherwise, a single overall medoid is returned.
-
-## ToDo List
-
-* Pass a list instead of a matrix to be more general?
-* Use Arrow parquet format to store distance matrix in multiple files when 
-sample size exceeds 10,000 or something like that.
-* Use Arrow connection to read in large data.
-* Add Progress bar.

@@ -33,11 +33,13 @@
   }
 
   if (missing(i)) {
-    i <- seq_len(N)
+    if (is.logical(j)) j <- which(j)
+    i <- setdiff(seq_len(N), j)
   }
 
   if (missing(j)) {
-    j <- seq_len(N)
+    if (is.logical(i)) i <- which(i)
+    j <- setdiff(seq_len(N), i)
   }
 
   if (is.numeric(i)) {

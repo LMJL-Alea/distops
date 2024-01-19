@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">distops</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,19 +45,12 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="0.0.9000" id="distops-009000">distops 0.0.9000<a class="anchor" aria-label="anchor" href="#distops-009000"></a></h2>
+<h2 class="pkg-version" data-toc-text="0.1.0" id="distops-010">distops 0.1.0<a class="anchor" aria-label="anchor" href="#distops-010"></a></h2>
 <div class="section level3">
-<h3 id="features-0-0-9000">Features<a class="anchor" aria-label="anchor" href="#features-0-0-9000"></a></h3>
+<h3 id="features-0-1-0">Features<a class="anchor" aria-label="anchor" href="#features-0-1-0"></a></h3>
 <ul><li>Provides functions <a href="https://lmjl-alea.github.io/distops/reference/use_distops.html"><code>use_distops()</code></a> and <a href="https://lmjl-alea.github.io/distops/reference/use_distance.html"><code>use_distance()</code></a> for package developers to define TBB-parallelized functions to compute pairwise distance matrices using a custom C++-implemented distance function.</li>
 <li>Provides subset operator <a href="https://lmjl-alea.github.io/distops/reference/sub-.dist.html"><code>[.dist</code></a> to subset a distance matrix. The returned object is either of class <code>dist</code> if both row and column indices are identical or of class <code>matrix</code> if both row and column indices are different.</li>
 <li>Provides function <code>find_medoids(D, memberships = NULL)</code> to find medoid(s) of a distance matrix. If <code>memberships</code> is provided, one medoid per cluster is returned. Otherwise, a single overall medoid is returned.</li>
-</ul></div>
-<div class="section level3">
-<h3 id="todo-list-0-0-9000">ToDo List<a class="anchor" aria-label="anchor" href="#todo-list-0-0-9000"></a></h3>
-<ul><li>Pass a list instead of a matrix to be more general?</li>
-<li>Use Arrow parquet format to store distance matrix in multiple files when sample size exceeds 10,000 or something like that.</li>
-<li>Use Arrow connection to read in large data.</li>
-<li>Add Progress bar.</li>
 </ul></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

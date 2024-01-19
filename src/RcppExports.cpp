@@ -11,6 +11,29 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
+// GetMedoid
+unsigned int GetMedoid(const Rcpp::NumericVector& distanceValues);
+RcppExport SEXP _distops_GetMedoid(SEXP distanceValuesSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const Rcpp::NumericVector& >::type distanceValues(distanceValuesSEXP);
+    rcpp_result_gen = Rcpp::wrap(GetMedoid(distanceValues));
+    return rcpp_result_gen;
+END_RCPP
+}
+// GetMedoids
+Rcpp::IntegerVector GetMedoids(const Rcpp::NumericVector& distanceValues, const Rcpp::IntegerVector& groupingValues);
+RcppExport SEXP _distops_GetMedoids(SEXP distanceValuesSEXP, SEXP groupingValuesSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const Rcpp::NumericVector& >::type distanceValues(distanceValuesSEXP);
+    Rcpp::traits::input_parameter< const Rcpp::IntegerVector& >::type groupingValues(groupingValuesSEXP);
+    rcpp_result_gen = Rcpp::wrap(GetMedoids(distanceValues, groupingValues));
+    return rcpp_result_gen;
+END_RCPP
+}
 // DiagonalSubsetter
 Rcpp::NumericVector DiagonalSubsetter(const Rcpp::NumericVector& x, const Rcpp::IntegerVector& indices);
 RcppExport SEXP _distops_DiagonalSubsetter(SEXP xSEXP, SEXP indicesSEXP) {
@@ -38,6 +61,8 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_distops_GetMedoid", (DL_FUNC) &_distops_GetMedoid, 1},
+    {"_distops_GetMedoids", (DL_FUNC) &_distops_GetMedoids, 2},
     {"_distops_DiagonalSubsetter", (DL_FUNC) &_distops_DiagonalSubsetter, 2},
     {"_distops_OffDiagonalSubsetter", (DL_FUNC) &_distops_OffDiagonalSubsetter, 3},
     {NULL, NULL, 0}

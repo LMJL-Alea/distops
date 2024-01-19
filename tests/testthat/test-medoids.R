@@ -1,0 +1,13 @@
+test_that("find_medoids() works", {
+  D <- stats::dist(iris[, 1:4])
+  expect_error(find_medoids(as.matrix(D)))
+  out1 <- find_medoids(D)
+  expect_equal(out1, 62L)
+  memberships <- rep(1:3, each = 50L)
+  expect_error(find_medoids(D, memberships))
+  memberships <- as.factor(memberships)
+  out2 <- find_medoids(D, memberships)
+  expected <- c(8L, 97L, 113L)
+  names(expected) <- c("1", "2", "3")
+  expect_equal(out2, expected)
+})

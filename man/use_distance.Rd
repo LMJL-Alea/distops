@@ -23,7 +23,7 @@ The user will be able to implement the desired distance function in a way
 compatible with the \strong{RcppParallel} workflow.
 }
 \examples{
-\dontrun{
+\donttest{
 use_distance("euclidean")
 }
 }

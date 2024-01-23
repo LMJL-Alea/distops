@@ -1,3 +1,11 @@
+## Resubmission
+
+This is a resubmission. In this version I have:
+
+* Modified the `DESCRIPTION` file as requested by CRAN;
+* Replaced `dontrun{}` by `donttest{}` in the examples of the `use_distops()` 
+and `use_distance()` functions.
+
 ## Test environments
 * local macOS R installation, R 4.3.2
 * continuous integration via GH actions:

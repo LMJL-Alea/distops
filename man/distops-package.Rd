@@ -6,7 +6,7 @@
 \alias{distops-package}
 \title{distops: Usual Operations for Distance Matrices in R}
 \description{
-It implements an alternative `dist()` function that integrates parallelization and progress bars via the `future` framework. It also provides functions to manipulate distance matrices, such as an implementation of the subset operator which never turn the `dist` object into a full matrix.
+It provides the subset operator for dist objects and a function to compute medoid(s) that are fully parallelized leveraging the 'RcppParallel' package. It also provides functions for package developers to easily implement their own parallelized dist() function using a custom 'C++'-based distance function.
 }
 \seealso{
 Useful links:

@@ -21,7 +21,7 @@ It finally creates the \code{src/Makevars} and \code{src/Makevars.win} files wit
 appropriate compilation flags.
 }
 \examples{
-\dontrun{
+\donttest{
 use_distops()
 }
 }

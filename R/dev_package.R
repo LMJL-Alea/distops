@@ -14,10 +14,14 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' use_distops()
 #' }
 use_distops <- function() {
+  if (length(list.files(path = "pathname", pattern = "\\.Rproj$")) == 0) return()
+  desc_path <- paste0(usethis::proj_path(), "/DESCRIPTION")
+  if (!fs::file_exists(desc_path)) return()
+
   # Check if backup files are present
   backup_files <- fs::dir_ls(
     path = usethis::proj_path(),
@@ -144,10 +148,14 @@ cap <- function(x) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' use_distance("euclidean")
 #' }
 use_distance <- function(distance_name) {
+  if (length(list.files(path = "pathname", pattern = "\\.Rproj$")) == 0) return()
+  desc_path <- paste0(usethis::proj_path(), "/DESCRIPTION")
+  if (!fs::file_exists(desc_path)) return()
+
   distance_name <- cap(distance_name)
   usethis::use_template(
     template = "dist.R",

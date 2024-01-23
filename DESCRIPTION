@@ -4,10 +4,11 @@ Version: 0.1.0
 Authors@R: 
     person("Aymeric", "Stamm", , "aymeric.stamm@cnrs.fr", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-8725-3654"))
-Description: It provides subset operator and medoid computation that are fully 
-    parallelized leveraging the 'RcppParallel' package. It also provides 
-    functions for package developers to easily implement their own parallelized 
-    'dist()' function using a custom C++-based distance function.
+Description: It provides the subset operator for dist objects and a function to
+    compute medoid(s) that are fully parallelized leveraging the 'RcppParallel'
+    package. It also provides functions for package developers to easily
+    implement their own parallelized dist() function using a custom 'C++'-based
+    distance function.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
